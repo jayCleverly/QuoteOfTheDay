@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export class Request {
+export class RequestService {
     private static readonly apiPath: string = "https://zenquotes.io/api/today";
 
     /*
@@ -8,12 +8,12 @@ export class Request {
      * @return The data collected from the call in a standardised format
      */
     public static async getData(): Promise<{}> {
-        return Request.formatResponse(await Request.callApi());
+        return RequestService.formatResponse(await RequestService.callApi());
     }
 
     private static async callApi(): Promise<string[]> {
         try {
-            const response = await axios.get(Request.apiPath);
+            const response = await axios.get(RequestService.apiPath);
             return response.data;
         } catch (error) {
             throw new Error(`Failed to retrieve data from api: ${error}`)
