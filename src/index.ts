@@ -1,4 +1,4 @@
-import { RequestService } from "./Request/RequestService";
+import { RequestService } from "./request/RequestService";
 
 export const handler = async (
     event: string[]):

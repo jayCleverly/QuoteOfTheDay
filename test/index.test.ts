@@ -1,5 +1,5 @@
 import { handler } from "../src/index";
-import { RequestService } from "../src/Request/RequestService";
+import { RequestService } from "../src/request/RequestService";
 
 describe("Handler tests", () => {
     const fakeEvent = ["test1@example.com", "test2@example.com"];
