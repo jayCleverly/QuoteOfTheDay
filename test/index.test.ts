@@ -2,6 +2,8 @@ import { handler } from "../src/index";
 import { RequestService } from "../src/Request/RequestService";
 
 describe("Handler tests", () => {
+    const fakeEvent = ["test1@example.com", "test2@example.com"];
+
     afterEach(() => {
         jest.resetModules();
     })
@@ -14,7 +16,7 @@ describe("Handler tests", () => {
 
         RequestService.getData = jest.fn().mockResolvedValue(mockedRequestServiceResponse);
 
-        const response = await handler();
+        const response = await handler(fakeEvent);
         expect(response.statusCode).toBe(200);
         expect(response.body).toEqual(JSON.stringify(mockedRequestServiceResponse));
     });
@@ -22,7 +24,7 @@ describe("Handler tests", () => {
     it("should return status code 500", async () => {
         RequestService.getData = jest.fn().mockRejectedValue(new Error());
 
-        const response = await handler();
+        const response = await handler(fakeEvent);
         expect(response.statusCode).toBe(500);
         expect(response.body).toEqual(JSON.stringify("Internal Server Error!"));
     });

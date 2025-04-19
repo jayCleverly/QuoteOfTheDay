@@ -18,10 +18,7 @@ describe("Api data collector unit tests", () => {
 
         );
 
-        const expectedResult = {
-            quote: 'Mocked quote',
-            author: 'Mocked author',
-        }
+        const expectedResult = "'Mocked quote'\nMocked author";
 
         expect(await RequestService.getData()).toEqual(expectedResult);
     });

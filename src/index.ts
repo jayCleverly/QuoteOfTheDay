@@ -1,7 +1,8 @@
-import { APIGatewayProxyResult } from "aws-lambda";
 import { RequestService } from "./Request/RequestService";
 
-export const handler = async (): Promise<APIGatewayProxyResult> => {
+export const handler = async (
+    event: string[]):
+    Promise<{statusCode: number, body: string}> => {
     try {
         // RequestService data from quote of the day api
         const apiResponse: any = await RequestService.getData();
