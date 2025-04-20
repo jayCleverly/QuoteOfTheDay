@@ -1,11 +1,11 @@
-import axios from "axios";
+import Axios from "axios";
 import { RequestService } from "../../src/request/RequestService";
 
 jest.mock("axios");
 
 describe("Api data collector unit tests", () => {
     it("should call the api", async () => {
-        (axios.get as jest.Mock).mockResolvedValue(
+        (Axios.get as jest.Mock).mockResolvedValue(
             {
                 data: [
                     {
@@ -24,7 +24,7 @@ describe("Api data collector unit tests", () => {
     });
 
     it("should fail to call the api", async () => {
-        (axios.get as jest.Mock).mockRejectedValue(new Error());
+        (Axios.get as jest.Mock).mockRejectedValue(new Error());
 
         await expect(RequestService.getData()).rejects.toThrow(new Error("Failed to retrieve data from api: Error"));
     });

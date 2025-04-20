@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "axios";
 
 export class RequestService {
     private static readonly API_PATH: string = "https://zenquotes.io/api/today";
@@ -13,7 +13,7 @@ export class RequestService {
 
     private static async callApi(): Promise<string[]> {
         try {
-            const response = await axios.get(RequestService.API_PATH);
+            const response = await Axios.get(RequestService.API_PATH);
             return response.data;
         } catch (error) {
             throw new Error(`Failed to retrieve data from api: ${error}`);

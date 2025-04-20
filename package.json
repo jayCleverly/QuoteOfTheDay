@@ -6,9 +6,10 @@
     "scripts": {
         "test": "jest",
         "coverage": "jest --coverage",
-        "clean": "rimraf dist",
+        "clean": "rm -rf dist",
+        "mkdirs": "mkdir dist",
         "webpack": "webpack",
-        "build": "npm install && npm run test && npm run clean && npm run webpack"
+        "build": "npm install && npm run test && npm run clean && npm run mkdirs && npm run webpack"
     },
 
     "dependencies": {

@@ -7,17 +7,16 @@ Parameters:
     Type: String
   MemorySize:
     Type: Number
-  ReservedConcurrency:
-    Type: Number
   Timeout:
     Type: Number
 
 
 Resources:
-  SESEmailIdentity:
-    Type: AWS::SES::EmailIdentity
-    Properties:
-      EmailIdentity: !Ref SourceEmailAddress
+  # When deploying for the first time, uncomment this block, after verification can delete or comment out.
+#  SESEmailIdentity:
+#    Type: AWS::SES::EmailIdentity
+#    Properties:
+#      EmailIdentity: !Ref SourceEmailAddress
 
   LambdaSendEmailRole:
     Type: AWS::IAM::Role
@@ -49,7 +48,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs20.x
       MemorySize: !Ref MemorySize
-      ReservedConcurrentExecutions: !Ref ReservedConcurrency
       Timeout: !Ref Timeout
       Role: !GetAtt LambdaSendEmailRole.Arn
       Description: Distributes a quote of the day to an email list.
