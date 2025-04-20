@@ -2,8 +2,12 @@ import { SESClient, SendEmailCommand} from "@aws-sdk/client-ses";
 
 export class SendService {
     private static readonly EMAIL_SUBJECT: string = "Quote of the day!";
+    private static readonly SOURCE_ADDRESS: string = process.env.SOURCE_EMAIL_ADDRESS || "verified.email@example.com";
+    private static readonly AWS_REGION: string = process.env.AWS_REGION_VALUE || "us-east-1";
 
-    private static sesClient = new SESClient({ region: "us-east-1" });
+    private static sesClient = new SESClient({
+        region: SendService.AWS_REGION
+    });
 
     /*
      * Sends the formatted quote to all addresses in the email list.
@@ -26,7 +30,7 @@ export class SendService {
                         Data: SendService.EMAIL_SUBJECT,
                     },
                 },
-                Source: "verified.email@example.com",
+                Source: SendService.SOURCE_ADDRESS,
             });
 
             try {

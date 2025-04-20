@@ -1,6 +1,6 @@
 {
-    "name": "joke-of-the-day",
-    "description": "Gets a random joke and sends it out",
+    "name": "quote-of-the-day",
+    "description": "Gets a quote of the day from a public api and sends it out to an email list",
     "version": "0.0.1",
 
     "scripts": {

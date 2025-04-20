@@ -1,5 +1,5 @@
 import { RequestService } from "./request/RequestService";
-import {SendService} from "./send/SendService";
+import { SendService } from "./send/SendService";
 
 export const handler = async (
     emailList: string[]):
