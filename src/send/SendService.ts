@@ -8,8 +8,8 @@ export class SendService {
     /*
      * Sends the formatted quote to all addresses in the email list.
      */
-    public static async bulkSend(toAddresses: string[], quote: any): Promise<void> {
-        for (const address of toAddresses) {
+    public static async bulkSend(emailList: string[], quote: any): Promise<void> {
+        for (const address of emailList) {
             const command = new SendEmailCommand({
                 Destination: {
                     ToAddresses: [address],
