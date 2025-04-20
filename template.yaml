@@ -9,7 +9,8 @@ Parameters:
     Type: Number
   Timeout:
     Type: Number
-
+  LogRetentionPeriod:
+    Type: Number
 
 Resources:
   # When deploying for the first time, uncomment this block, after verification can delete or comment out.
@@ -39,6 +40,16 @@ Resources:
                   - ses:SendEmail
                   - ses:SendRawEmail
                 Resource: !Sub arn:aws:ses:${AWS::Region}:${AWS::AccountId}:identity/${SourceEmailAddress}
+        - PolicyName: AllowCloudWatchLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/*:*
 
   QuoteOfTheDayService:
     Type: AWS::Serverless::Function
@@ -55,3 +66,9 @@ Resources:
         Variables:
           SOURCE_EMAIL_ADDRESS: !Ref SourceEmailAddress
           AWS_REGION_VALUE: !Ref AWS::Region
+
+  QuoteOfTheDayLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays: !Ref LogRetentionPeriod
+      LogGroupName: !Join [ "", [ "/aws/lambda/", !Ref QuoteOfTheDayService ] ]

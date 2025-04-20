@@ -13,6 +13,7 @@ const handler = async (
             body: JSON.stringify(`Quote: ${quoteOfTheDay} sent out to ${emailList}`),
         }
     } catch (error) {
+        console.error(`Error: ${error}.`)
         return {
             statusCode: 500,
             body: JSON.stringify("Internal Server Error!")
