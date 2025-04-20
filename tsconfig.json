@@ -1,12 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "CommonJS",
+    "target": "es2019",
+    "module": "commonjs",
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "baseUrl": "./",
+    "outDir": "dist",
+    "sourceMap": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "outDir": "./dist"
-  },
-  "exclude": ["node_modules", "dist"],
-  "include": ["./**/*.ts"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+  }
 }

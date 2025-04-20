@@ -1,7 +1,7 @@
-import { RequestService } from "./request/RequestService";
-import { SendService } from "./send/SendService";
+import { RequestService } from "@/request/RequestService";
+import { SendService } from "@/send/SendService";
 
-export const handler = async (
+const handler = async (
     emailList: string[]):
     Promise<{statusCode: number, body: string}> => {
     try {
@@ -19,3 +19,5 @@ export const handler = async (
         }
     }
 }
+
+module.exports.handler = handler;

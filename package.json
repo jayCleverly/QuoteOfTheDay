@@ -1,7 +1,12 @@
 {
     "name": "quote-of-the-day",
     "description": "Gets a quote of the day from a public api and sends it out to an email list",
-    "version": "0.0.1",
+    "version": "1.0.0",
+
+    "engines": {
+        "node": ">=20.0.0 <23.0.0"
+    },
+    "main": "src/index.ts",
 
     "scripts": {
         "test": "jest",
@@ -11,21 +16,16 @@
         "webpack": "webpack",
         "build": "npm install && npm run test && npm run clean && npm run mkdirs && npm run webpack"
     },
-
-    "dependencies": {
-        "axios": "^1.7.9"
-    },
-
     "devDependencies": {
         "@types/aws-lambda": "^8.10.146",
         "@types/jest": "^29.5.14",
-        "@aws-sdk/client-ses": "^3.787.0",
-        "jest": "^29.7.0",
         "ts-jest": "^29.2.5",
-        "rimraf": "^3.0.0",
-        "webpack": "^5.0.0",
-        "webpack-cli": "^4.0.0",
-        "webpack-node-externals": "^3.0.0",
-        "ts-loader": "^9.0.0"
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4",
+        "ts-loader": "^9.5.1"
+    },
+    "dependencies": {
+        "axios": "^1.7.9",
+        "@aws-sdk/client-ses": "^3.787.0"
     }
 }
