@@ -5,6 +5,8 @@ Description: AWS resources to distribute a quote of the day to an email list.
 Parameters:
   SourceEmailAddress:
     Type: String
+  DestinationEmailList:
+    Type: CommaDelimitedList
   MemorySize:
     Type: Number
     Default: 128
@@ -62,6 +64,10 @@ Resources:
       Environment:
         Variables:
           SOURCE_EMAIL_ADDRESS: !Ref SourceEmailAddress
+          DESTINATION_EMAIL_LIST:
+            Fn::Join:
+              - ","
+              - !Ref DestinationEmailList
     Metadata:
       BuildMethod: esbuild
       BuildProperties:

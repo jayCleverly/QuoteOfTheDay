@@ -1,14 +1,14 @@
 import { RequestService } from '@/request/RequestService';
 import { SendService } from '@/send/SendService';
 
-export const handler = async (emailList: string[]): Promise<{ statusCode: number; body: string }> => {
+export const handler = async (): Promise<{ statusCode: number; body: string }> => {
     try {
         const quoteOfTheDay: any = await RequestService.getData();
-        await SendService.bulkSend(emailList, quoteOfTheDay);
+        await SendService.bulkSend(quoteOfTheDay);
 
         return {
             statusCode: 200,
-            body: JSON.stringify(`Quote: ${quoteOfTheDay}.\nSent out to ${emailList}!`),
+            body: JSON.stringify(`Quote: ${quoteOfTheDay}.\nSent out to email list!`),
         };
     } catch (error) {
         console.error(`Error: ${error}.`);

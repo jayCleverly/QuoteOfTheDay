@@ -11,7 +11,6 @@ jest.mock('@aws-sdk/client-ses', () => {
 });
 
 describe("Email sender unit tests", () => {
-    const fakeEmails = ["test1@example.com", "test2@example.com"];
     const fakeQuote = "'Test quote'\nTest author";
 
     let sesClientMock: jest.Mocked<SESClient>
@@ -26,9 +25,9 @@ describe("Email sender unit tests", () => {
     })
 
     it("should send quotes to the email list", async () => {
-        await SendService.bulkSend(fakeEmails, fakeQuote);
+        await SendService.bulkSend(fakeQuote);
 
-        expect(sesClientMock.send).toHaveBeenCalledTimes(fakeEmails.length);
+        expect(sesClientMock.send).toHaveBeenCalledTimes(2);
     });
 
     it("should fail to send all emails", async () => {
@@ -36,8 +35,8 @@ describe("Email sender unit tests", () => {
             .mockResolvedValueOnce("success")
             .mockRejectedValueOnce(new Error());
 
-        await expect(SendService.bulkSend(fakeEmails, fakeQuote)).rejects.toThrow(
-            new Error("Email failed to send from verified.email@example.com to test2@example.com: {}."));
+        await expect(SendService.bulkSend(fakeQuote)).rejects.toThrow(
+            new Error("Email failed to send from verified.email1@example.com to verified.email2@example.com: {}."));
 
         expect(sesClientMock.send).toHaveBeenCalledTimes(2);
     });
