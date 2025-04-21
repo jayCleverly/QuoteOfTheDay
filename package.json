@@ -11,21 +11,15 @@
     "scripts": {
         "test": "jest",
         "coverage": "jest --coverage",
-        "clean": "rm -rf dist",
-        "mkdirs": "mkdir dist",
-        "webpack": "webpack",
-        "build": "npm install && npm run test && npm run clean && npm run mkdirs && npm run webpack"
+        "build": "npm install && npm run test"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.146",
         "@types/jest": "^29.5.14",
-        "ts-jest": "^29.2.5",
-        "webpack": "^5.95.0",
-        "webpack-cli": "^5.1.4",
-        "ts-loader": "^9.5.1"
+        "ts-jest": "^29.2.5"
     },
     "dependencies": {
         "axios": "^1.7.9",
-        "@aws-sdk/client-ses": "^3.787.0"
+        "@aws-sdk/client-ses": "^3.787.0",
+        "esbuild": "^0.14.14"
     }
 }

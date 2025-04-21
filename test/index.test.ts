@@ -1,6 +1,6 @@
-const { handler } = require('@/index')
-import { RequestService } from "@/request/RequestService";
-import {SendService} from "@/send/SendService";
+import { handler } from "../src/index";
+import { RequestService } from "../src/request/RequestService";
+import {SendService} from "../src/send/SendService";
 
 describe("Handler tests", () => {
     const fakeEmailList = ["test1@example.com", "test2@example.com"];
