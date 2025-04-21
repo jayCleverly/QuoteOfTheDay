@@ -9,13 +9,22 @@
     "main": "src/index.ts",
 
     "scripts": {
+        "compile": "tsc",
+        "lint": "eslint '*/*.ts' --quiet --fix",
         "test": "jest",
         "coverage": "jest --coverage",
-        "build": "npm install && npm run test"
+        "build": "npm install && npm run compile && npm run lint && npm run test"
     },
     "devDependencies": {
         "@types/jest": "^29.5.14",
-        "ts-jest": "^29.2.5"
+        "@typescript-eslint/eslint-plugin": "^5.10.2",
+        "@typescript-eslint/parser": "^5.10.2",
+        "eslint": "^8.8.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "typescript": "^4.8.4",
+        "ts-jest": "^29.2.5",
+        "prettier": "^2.5.1"
     },
     "dependencies": {
         "axios": "^1.7.9",

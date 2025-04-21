@@ -35,9 +35,9 @@ export class SendService {
 
             try {
                 await SendService.sesClient.send(command);
-                console.log(`Email sent to ${address}.`);
+                console.log(`Email successfully sent from ${SendService.SOURCE_ADDRESS} to ${address}.`);
             } catch (error) {
-                throw new Error(`Failed to send email to ${address}: ${error}.`);
+                throw new Error(`Email failed to send from ${SendService.SOURCE_ADDRESS} to ${address}: ${JSON.stringify(error)}.`);
             }
         }
     }

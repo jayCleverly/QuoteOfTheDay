@@ -37,7 +37,7 @@ describe("Email sender unit tests", () => {
             .mockRejectedValueOnce(new Error());
 
         await expect(SendService.bulkSend(fakeEmails, fakeQuote)).rejects.toThrow(
-            new Error("Failed to send email to test2@example.com: Error."));
+            new Error("Email failed to send from verified.email@example.com to test2@example.com: {}."));
 
         expect(sesClientMock.send).toHaveBeenCalledTimes(2);
     });
