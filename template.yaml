@@ -65,7 +65,6 @@ Resources:
       Environment:
         Variables:
           SOURCE_EMAIL_ADDRESS: !Ref SourceEmailAddress
-          AWS_REGION_VALUE: !Ref AWS::Region
     Metadata:
       BuildMethod: esbuild
       BuildProperties:

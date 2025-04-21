@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { RequestService } from "../../src/request/RequestService";
+import { RequestService } from "@/request/RequestService";
 
 jest.mock("axios");
 

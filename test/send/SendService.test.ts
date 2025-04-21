@@ -1,4 +1,4 @@
-import { SendService } from "../../src/send/SendService";
+import { SendService } from "@/send/SendService";
 import { SESClient } from '@aws-sdk/client-ses';
 
 jest.mock('@aws-sdk/client-ses', () => {
