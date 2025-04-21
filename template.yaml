@@ -82,3 +82,21 @@ Resources:
     Properties:
       RetentionInDays: !Ref LogRetentionPeriod
       LogGroupName: !Join [ "", [ "/aws/lambda/", !Ref QuoteOfTheDayService ] ]
+
+  DailyLambdaTriggerRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: daily-email-lambda-trigger
+      ScheduleExpression: cron(0 8 * * ? *) # 8 UTC
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt QuoteOfTheDayService.Arn
+          Id: TargetLambda
+
+  LambdaPermissionForEvents:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref QuoteOfTheDayService
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt DailyLambdaTriggerRule.Arn
