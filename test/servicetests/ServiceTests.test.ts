@@ -7,14 +7,13 @@ import { handler } from "@/index";
 describe("Quote of the day service", () => {
     const sandbox = sinon.createSandbox();
     const emailList = ["verified_email@example.com"]
-    const mockedQuote = "Mocked quote."
-    const mockedAuthor = "Mocked author."
+    const mockedQuote = "Mocked quote"
+    const mockedAuthor = "Mocked author"
     const mockedApiResponse =
         [
             {
                 q: mockedQuote,
                 a: mockedAuthor,
-                h: '<blockquote>&ldquo;${mockedQuote}&rdquo; &mdash; <footer>${mockedAuthor}</footer></blockquote>'
             }
         ];
 
@@ -41,7 +40,8 @@ describe("Quote of the day service", () => {
 
         const response = await handler(emailList);
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(JSON.stringify("Quote: 'Mocked quote.'\nMocked author. sent out to verified_email@example.com"));
+        expect(response.body).toEqual(JSON.stringify(
+            "Quote: 'Mocked quote'\nMocked author.\nSent out to verified_email@example.com!"));
     });
 
     it("should get a response from the api and fail to send out emails", async () => {

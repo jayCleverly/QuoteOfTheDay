@@ -11,7 +11,7 @@ describe('Handler tests', () => {
 
     it('should return status code 200', async () => {
         const mockedRequestServiceResponse = "'Mocked quote'\nMocked author";
-        const expectedResponseBody = `Quote: ${mockedRequestServiceResponse} sent out to ${fakeEmailList}`;
+        const expectedResponseBody = `Quote: ${mockedRequestServiceResponse}.\nSent out to ${fakeEmailList}!`;
 
         RequestService.getData = jest.fn().mockResolvedValue(mockedRequestServiceResponse);
         SendService.bulkSend = jest.fn().mockResolvedValue('success');

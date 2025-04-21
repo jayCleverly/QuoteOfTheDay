@@ -2,7 +2,8 @@ import { SESClient, SendEmailCommand} from "@aws-sdk/client-ses";
 
 export class SendService {
     private static readonly EMAIL_SUBJECT: string = "Quote of the day!";
-    private static readonly SOURCE_ADDRESS: string = process.env.SOURCE_EMAIL_ADDRESS || "verified.email@example.com";
+    private static readonly SOURCE_ADDRESS: string =
+        process.env.SOURCE_EMAIL_ADDRESS || "verified.email@example.com";
 
     private static sesClient = new SESClient();
 
@@ -32,9 +33,11 @@ export class SendService {
 
             try {
                 await SendService.sesClient.send(command);
-                console.log(`Email successfully sent from ${SendService.SOURCE_ADDRESS} to ${address}.`);
+                console.log(
+                    `Email successfully sent from ${SendService.SOURCE_ADDRESS} to ${address}.`);
             } catch (error) {
-                throw new Error(`Email failed to send from ${SendService.SOURCE_ADDRESS} to ${address}: ${JSON.stringify(error)}.`);
+                throw new Error(
+                    `Email failed to send from ${SendService.SOURCE_ADDRESS} to ${address}: ${JSON.stringify(error)}.`);
             }
         }
     }

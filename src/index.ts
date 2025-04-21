@@ -1,5 +1,5 @@
-import { RequestService } from './request/RequestService';
-import { SendService } from './send/SendService';
+import { RequestService } from '@/request/RequestService';
+import { SendService } from '@/send/SendService';
 
 export const handler = async (emailList: string[]): Promise<{ statusCode: number; body: string }> => {
     try {
@@ -8,7 +8,7 @@ export const handler = async (emailList: string[]): Promise<{ statusCode: number
 
         return {
             statusCode: 200,
-            body: JSON.stringify(`Quote: ${quoteOfTheDay} sent out to ${emailList}`),
+            body: JSON.stringify(`Quote: ${quoteOfTheDay}.\nSent out to ${emailList}!`),
         };
     } catch (error) {
         console.error(`Error: ${error}.`);

@@ -7,18 +7,15 @@ Parameters:
     Type: String
   MemorySize:
     Type: Number
+    Default: 128
   Timeout:
     Type: Number
+    Default: 10
   LogRetentionPeriod:
     Type: Number
+    Default: 1
 
 Resources:
-  # When deploying for the first time, uncomment this block, after verification can delete or comment out.
-#  SESEmailIdentity:
-#    Type: AWS::SES::EmailIdentity
-#    Properties:
-#      EmailIdentity: !Ref SourceEmailAddress
-
   LambdaSendEmailRole:
     Type: AWS::IAM::Role
     Properties:

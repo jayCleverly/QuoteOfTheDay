@@ -26,6 +26,7 @@ describe("Api data collector unit tests", () => {
     it("should fail to call the api", async () => {
         (Axios.get as jest.Mock).mockRejectedValue(new Error());
 
-        await expect(RequestService.getData()).rejects.toThrow(new Error("Failed to retrieve data from api: Error"));
+        await expect(RequestService.getData()).rejects.toThrow(
+            new Error("Failed to retrieve data from api: Error"));
     });
 });
